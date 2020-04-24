@@ -20,7 +20,7 @@ function PokeDex() {
   // };
   const POKE_API = "https://pokeapi.co/api/v2/pokemon/"
   
-  const [mons, addMon] = useAxios(`${POKE_API} ${name}`);
+  const [mons, addMon] = useAxios(POKE_API);
 
   function addingMon(){
     addMon(mons);
