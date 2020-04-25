@@ -12,9 +12,12 @@ function useFlip(initialVal = true){
 
 function useAxios(url){
     const [values, setValue] = useState([]);
-    const  addValues = async () =>{
-        const resp = await axios.get(url);
-        setValue(oldValues => [...oldValues, {...resp.data, id: uuid() }])
+    const  addValues = async (values, modifier="") =>{
+        const resp = await axios.get(url+modifier);
+        setValue(values => [...values, {...resp.data, id: uuid() }])
+        console.log("URL: ", url)
+        console.log("Modifier: ", modifier);
+        console.log("Response: ", resp);
     }
     return [values, addValues];
 }
@@ -26,14 +29,14 @@ export {useAxios};
 
 
 // jay trying to borrow from useFetch... not sure it's really panning out
-useEffect( async() => {
-    try{
-        const res = await fetch(url);
-        const json = await res.json();
-        setResponse(json);
-    }catch(error){
-        setError(error);
-    }
-    setIsLoading(false);
+// useEffect( async() => {
+//     try{
+//         const res = await fetch(url);
+//         const json = await res.json();
+//         setResponse(json);
+//     }catch(error){
+//         setError(error);
+//     }
+//     setIsLoading(false);
 
-}},[])
+// }},[])

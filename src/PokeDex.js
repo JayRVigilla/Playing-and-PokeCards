@@ -22,10 +22,9 @@ function PokeDex() {
   
   const [mons, addMon] = useAxios(POKE_API);
 
-  function addingMon(){
-    addMon(mons);
+  function addingMon(name){
+    addMon(mons, name);
   }
-
 
   return (
     <div className="PokeDex">
